@@ -13,10 +13,19 @@
   </component>
   <component name="DBNavigator.Project.DatabaseConsoleManager">
     <connection id="5e004dca-ddf3-4956-acc5-846585bf1e99">
-      <console name="wonderworldcolleget120" type="STANDARD" schema="" session="Main"><![CDATA[#Database üzerinden chat_users tablosundaki create_staff_id=1 olan
+      <console name="wonderworldcolleget120" type="STANDARD" schema="" session="Main"><![CDATA[#Query01
+#Database üzerinden chat_users tablosundaki create_staff_id=1 olan
  # kullanıcı sayısının 11 olduğunu dogrulayiniz
 
-select count(*) from u168183796_qawonder.chat_users where create_staff_id=1]]></console>
+select count(*) from u168183796_qawonder.chat_users where create_staff_id=1
+  
+  #Query02
+#Database üzerinden students tablosundaki firstname= Brian ve 
+#lastname= Kohlar olan öğrencinin email bilgisinin brain@gmail.com 
+#olduğunu doğrulayınız.
+
+
+Select * From u168183796_qawonder.students Where firstname= 'Brian' AND lastname= 'Kohlar';]]></console>
     </connection>
   </component>
   <component name="DBNavigator.Project.DatabaseEditorStateManager">
