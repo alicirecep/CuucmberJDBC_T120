@@ -11,6 +11,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 
 public class JDBC_StepDefinition {
@@ -59,7 +60,9 @@ public class JDBC_StepDefinition {
 
             String query = queryManage.getStudentsQuery();
 
-            resultSet = JDBCReusableMethods.getStatement().executeQuery(query);
+            Statement statement = JDBCReusableMethods.getStatement();
+
+        resultSet = statement.executeQuery(query);
 
     }
     @Given("Students tablosundan donen resultSet`teki email bilgisi dogrulanir.")
@@ -72,6 +75,8 @@ public class JDBC_StepDefinition {
         String actualData = resultSet.getString("email");
 
         assertEquals(expectedData,actualData);
+
+
 
     }
 
@@ -120,7 +125,7 @@ public class JDBC_StepDefinition {
 
     //********** Query05 *********
 
-    @Given("UpdateQuery`si hazirlanir ve transport_route tablosuna execute edilir.")
+    @Given("UpdateQuery`si hazirlanir ve roles tablosuna execute edilir.")
     public void update_query_si_hazirlanir_ve_transport_route_tablosuna_execute_edilir() throws SQLException {
 
         String query = queryManage.getRolesQuery();
@@ -132,6 +137,8 @@ public class JDBC_StepDefinition {
         preparedStatement.setInt(3, 1);
 
         int rowCount = preparedStatement.executeUpdate();
+
+        assertTrue(rowCount==1);
 
         System.out.println(rowCount + " satirda update islemi gerceklesti.");
 

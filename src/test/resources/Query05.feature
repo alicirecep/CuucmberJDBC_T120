@@ -5,5 +5,5 @@ Feature: Database üzerinden transport_route tablosuna yeni bir kayıt eklenebil
 
 
     * Database baglantisi kurulur.
-    * UpdateQuery`si hazirlanir ve transport_route tablosuna execute edilir.
+    * UpdateQuery`si hazirlanir ve roles tablosuna execute edilir.
     * Database baglantisi kapatilir.
