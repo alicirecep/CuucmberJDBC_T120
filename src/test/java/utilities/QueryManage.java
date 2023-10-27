@@ -9,6 +9,10 @@ public class QueryManage {
 
   private String onlineExamQuery = "SELECT exam ,AVG(passing_percentage) FROM u168183796_qawonder.onlineexam group by exam";
 
+  private String rolesQuery = "INSERT INTO u168183796_qawonder.roles (name, is_active, is_system) values (?, ?, ?)";
+
+  private String stafLeaveRequestQuery = "DELETE FROM u168183796_qawonder.staff_leave_request WHERE id= ?";
+
 
 
 
@@ -24,5 +28,13 @@ public class QueryManage {
 
     public String getOnlineExamQuery() {
         return onlineExamQuery;
+    }
+
+    public String getRolesQuery() {
+        return rolesQuery;
+    }
+
+    public String getStafLeaveRequestQuery() {
+        return stafLeaveRequestQuery;
     }
 }

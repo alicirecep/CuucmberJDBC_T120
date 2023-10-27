@@ -43,22 +43,44 @@ Select * from u168183796_qawonder.onlineexam;
 # month degeri 'October' olan kaydın 
 # fine_amount değerini '200.00' olarak güncellenebilmeli. 
 
-UPDATE u168183796_qawonder.transport_feemaster SET fine_amount = 200.00 WHERE month = 'October';
+UPDATE u168183796_qawonder.transport_feemaster SET fine_amount = 700.00 WHERE month = 'October';
 
 select * from u168183796_qawonder.transport_feemaster;
-INSERT INTO transport_route (id, route_title, is_active, created_at)
-VALUES (2952, 'corum-tokat', 1, '2023-10-26 15:30:00');
 
-INSERT INTO u168183796_qawonder.transport_feemaster (session_id, month, fine_type) values (1,'t120', 'notfix');
 
-Select * from u168183796_qawonder.transport_feemaster;]]></console>
+INSERT INTO u168183796_qawonder.transport_feemaster (month, fine_type) values (1,'t1120', 'flexible');
+
+Select * from u168183796_qawonder.transport_route;
+
+INSERT INTO u168183796_qawonder.transport_route (route_title, is_active) values ('Istanbul-Munih', 'yes');
+
+Select id from u168183796_qawonder.transport_route where route_title= 'Istanbul-Munih';
+
+
+
+
+INSERT INTO u168183796_qawonder.roles (name, is_active, is_system) values ('t120', '1','1');
+
+Select * from u168183796_qawonder.roles;
+
+
+DELETE FROM u168183796_qawonder.staff_leave_request WHERE id= 12;
+
+select * from u168183796_qawonder.staff_leave_request;]]></console>
     </connection>
   </component>
   <component name="DBNavigator.Project.DatabaseEditorStateManager">
     <last-used-providers />
   </component>
   <component name="DBNavigator.Project.DatabaseFileManager">
-    <open-files />
+    <open-files>
+      <object connection-id="5e004dca-ddf3-4956-acc5-846585bf1e99" object-ref="schemas/u168183796_qawonder/tables/exams" />
+      <object connection-id="5e004dca-ddf3-4956-acc5-846585bf1e99" object-ref="schemas/u168183796_qawonder/tables/roles" />
+    </open-files>
+  </component>
+  <component name="DBNavigator.Project.DatasetFilterManager">
+    <filter-actions connection-id="5e004dca-ddf3-4956-acc5-846585bf1e99" dataset="u168183796_qawonder.roles" active-filter-id="" />
+    <filter-actions connection-id="5e004dca-ddf3-4956-acc5-846585bf1e99" dataset="u168183796_qawonder.exams" active-filter-id="" />
   </component>
   <component name="DBNavigator.Project.ExecutionManager">
     <retain-sticky-names value="false" />

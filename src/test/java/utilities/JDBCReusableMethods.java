@@ -94,9 +94,9 @@ public class JDBCReusableMethods {
 
 
     public static Connection getConnection() {
-        String url = "";
-        String username="";
-        String password="";
+        String url=ConfigReader.getProperty("url");
+        String username=ConfigReader.getProperty("username");
+        String password=ConfigReader.getProperty("password");
         try {
             connection = DriverManager.getConnection(url, username, password);
         } catch (SQLException e) {

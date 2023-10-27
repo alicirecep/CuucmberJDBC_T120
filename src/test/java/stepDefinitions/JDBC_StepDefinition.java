@@ -5,6 +5,7 @@ import org.junit.Assert;
 import utilities.JDBCReusableMethods;
 import utilities.QueryManage;
 
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -14,6 +15,7 @@ import static org.junit.Assert.assertEquals;
 
 public class JDBC_StepDefinition {
 
+    PreparedStatement preparedStatement;
     ResultSet resultSet;
 
     QueryManage queryManage = new QueryManage();
@@ -98,9 +100,62 @@ public class JDBC_StepDefinition {
     //********** Query04 ***************
 
     @Given("Query hazirlanir ve transport_feemaster tablosuna executeUpdate edilir.")
-    public void query_hazirlanir_ve_transport_feemaster_tablosuna_execute_update_edilir() {
+    public void query_hazirlanir_ve_transport_feemaster_tablosuna_execute_update_edilir() throws SQLException {
+
+        String query = "UPDATE u168183796_qawonder.transport_feemaster SET fine_amount = ? WHERE month = ?";
+
+        // PreparedStatement ile execute islemi
+
+         preparedStatement = JDBCReusableMethods.getConnection().prepareStatement(query);
+
+        preparedStatement.setFloat(1,250);
+        preparedStatement.setString(2, "October");
+
+        int rowCount = preparedStatement.executeUpdate();
+
+        System.out.println("Update islemi gerceklesti ve "+ rowCount +" satir etkilendi.");
 
 
+    }
+
+    //********** Query05 *********
+
+    @Given("UpdateQuery`si hazirlanir ve transport_route tablosuna execute edilir.")
+    public void update_query_si_hazirlanir_ve_transport_route_tablosuna_execute_edilir() throws SQLException {
+
+        String query = queryManage.getRolesQuery();
+
+        preparedStatement = JDBCReusableMethods.getConnection().prepareStatement(query);
+
+        preparedStatement.setString(1, "NewRole");
+        preparedStatement.setInt(2, 1);
+        preparedStatement.setInt(3, 1);
+
+        int rowCount = preparedStatement.executeUpdate();
+
+        System.out.println(rowCount + " satirda update islemi gerceklesti.");
+
+    }
+
+
+    //**************Query06 *****************
+
+    @Given("Delete Query`si hazirlanir ve staff_leave_request tablosuna execute edilir.")
+    public void delete_query_si_hazirlanir_ve_staff_leave_request_tablosuna_execute_edilir() throws SQLException {
+
+        String query = queryManage.getStafLeaveRequestQuery();
+
+        preparedStatement = JDBCReusableMethods.getConnection().prepareStatement(query);
+
+        preparedStatement.setInt(1,12);
+
+        int rowCount = preparedStatement.executeUpdate();
+
+        if(rowCount>0){
+            System.out.println( rowCount +" satir silindi");
+        }else{
+            System.out.println( "Silme islemi sirasinda bir hata olustu.. Failed");
+        }
 
     }
 
