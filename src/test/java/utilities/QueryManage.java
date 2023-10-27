@@ -7,7 +7,7 @@ public class QueryManage {
 
   private String studentsQuery = "Select * From u168183796_qawonder.students Where firstname= 'Brian' AND lastname= 'Kohlar'";
 
-
+  private String onlineExamQuery = "SELECT exam ,AVG(passing_percentage) FROM u168183796_qawonder.onlineexam group by exam";
 
 
 
@@ -20,5 +20,9 @@ public class QueryManage {
 
     public String getStudentsQuery() {
         return studentsQuery;
+    }
+
+    public String getOnlineExamQuery() {
+        return onlineExamQuery;
     }
 }

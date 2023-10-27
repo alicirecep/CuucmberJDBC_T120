@@ -7,6 +7,7 @@ import utilities.QueryManage;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 
 import static org.junit.Assert.assertEquals;
 
@@ -69,6 +70,37 @@ public class JDBC_StepDefinition {
         String actualData = resultSet.getString("email");
 
         assertEquals(expectedData,actualData);
+
+    }
+
+
+    //********* Query03 ***********
+
+    @Given("Query hazirlanir ve onlineexam tablosuna execute edilir.")
+    public void query_hazirlanir_ve_onlineexam_tablosuna_execute_edilir() throws SQLException {
+
+        String query = queryManage.getOnlineExamQuery();
+
+        resultSet = JDBCReusableMethods.getStatement().executeQuery(query);
+
+    }
+    @Given("Onlineexam tablosundan donen resultSet`teki bilgiler listelenir.")
+    public void onlineexam_tablosundan_donen_result_set_teki_bilgiler_listelenir() throws SQLException {
+
+        while(resultSet.next()){
+
+            System.out.println( " exam : "+ resultSet.getString(1)+ " ->   ortalama: " +
+                    resultSet.getString(2));
+
+        }
+    }
+
+    //********** Query04 ***************
+
+    @Given("Query hazirlanir ve transport_feemaster tablosuna executeUpdate edilir.")
+    public void query_hazirlanir_ve_transport_feemaster_tablosuna_execute_update_edilir() {
+
+
 
     }
 

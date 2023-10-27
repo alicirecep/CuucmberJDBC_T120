@@ -2,7 +2,7 @@
 <project version="4">
   <component name="DBNavigator.Project.DataEditorManager">
     <record-view-column-sorting-type value="BY_INDEX" />
-    <value-preview-text-wrapping value="true" />
+    <value-preview-text-wrapping value="false" />
     <value-preview-pinned value="false" />
   </component>
   <component name="DBNavigator.Project.DatabaseBrowserManager">
@@ -25,16 +25,40 @@ select count(*) from u168183796_qawonder.chat_users where create_staff_id=1
 #olduğunu doğrulayınız.
 
 
-Select * From u168183796_qawonder.students Where firstname= 'Brian' AND lastname= 'Kohlar';]]></console>
+Select * From u168183796_qawonder.students Where firstname= 'Brian' AND lastname= 'Kohlar';
+
+
+#Query03
+# Database üzerinden onlineexam tablosundaki sinavlarin passing_percentage 
+#değerlerinin ortalamasını alıp listeleyınız.
+
+SELECT AVG(passing_percentage) AS Ortalama_Passing_Percentage FROM onlineexam;
+
+SELECT exam ,AVG(passing_percentage) FROM u168183796_qawonder.onlineexam group by exam;
+
+Select * from u168183796_qawonder.onlineexam;
+
+#Query04
+# Database üzerinden transport_feemaster tablosundaki 
+# month degeri 'October' olan kaydın 
+# fine_amount değerini '200.00' olarak güncellenebilmeli. 
+
+UPDATE u168183796_qawonder.transport_feemaster SET fine_amount = 200.00 WHERE month = 'October';
+
+select * from u168183796_qawonder.transport_feemaster;
+INSERT INTO transport_route (id, route_title, is_active, created_at)
+VALUES (2952, 'corum-tokat', 1, '2023-10-26 15:30:00');
+
+INSERT INTO u168183796_qawonder.transport_feemaster (session_id, month, fine_type) values (1,'t120', 'notfix');
+
+Select * from u168183796_qawonder.transport_feemaster;]]></console>
     </connection>
   </component>
   <component name="DBNavigator.Project.DatabaseEditorStateManager">
     <last-used-providers />
   </component>
   <component name="DBNavigator.Project.DatabaseFileManager">
-    <open-files>
-      <object connection-id="5e004dca-ddf3-4956-acc5-846585bf1e99" object-ref="consoles/wonderworldcolleget120" />
-    </open-files>
+    <open-files />
   </component>
   <component name="DBNavigator.Project.ExecutionManager">
     <retain-sticky-names value="false" />

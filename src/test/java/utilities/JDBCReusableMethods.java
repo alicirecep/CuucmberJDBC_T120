@@ -111,7 +111,7 @@ public class JDBCReusableMethods {
     //used to get statement
     public static Statement getStatement() {
         try {
-            statement = connection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+            statement = connection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
         } catch (SQLException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
