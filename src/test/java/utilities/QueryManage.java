@@ -1,6 +1,6 @@
 package utilities;
 
-public class QueryManage {
+    public class QueryManage {
 
 
   private String chatUsersQuery = "select count(*) from u168183796_qawonder.chat_users where create_staff_id=1";
